@@ -1,0 +1,14 @@
+# Runtime dependencies for this Python project.
+#
+# Install with:
+#   python -m pip install -r requirements.txt
+#
+# Update this file after adding/removing packages:
+#   python -m pip freeze > requirements.txt
+
+jax==0.11.1
+jaxlib==0.11.1
+matplotlib==3.11.1
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1

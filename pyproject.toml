@@ -7,6 +7,7 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "cvxpy>=1.9.2",
     "cyipopt>=1.7.0",
     "jax==0.11.1",
     "jaxlib==0.11.1",
@@ -29,4 +30,5 @@ requires = ["uv_build>=0.12.10,<0.13.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
-qpth = { path = "/tmp/qpth" }
+qpth = { path = "vendor/qpth-0.0.15-py3-none-any.whl" }
+

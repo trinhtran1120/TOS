@@ -1,3 +1,8 @@
+import os
+# torch bundles its own libomp.dylib, which conflicts with the Homebrew libomp
+# pulled in via cyipopt/ipopt's openblas dependency on macOS.
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
 try:
     import waitGPU
     waitGPU.wait(utilization=50, memory_ratio=0.5, available_memory=5000, interval=9, nproc=1, ngpu=1)
@@ -16,8 +21,7 @@ from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
 import pickle
 import time
-from setproctitle import setproctitle
-import os
+# from setproctitle import setproctitle
 import argparse
 
 from utils import my_hash, str_to_bool
@@ -88,7 +92,7 @@ def main():
             args[key] = defaults[key]
     print(args)
 
-    setproctitle('DC3-{}'.format(args['probType']))
+    # setproctitle('DC3-{}'.format(args['probType']))
 
     # Load data, and put on GPU if needed
     prob_type = args['probType']

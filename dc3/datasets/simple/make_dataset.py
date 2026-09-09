@@ -7,9 +7,6 @@ import os
 sys.path.insert(1, os.path.join(sys.path[0], os.pardir, os.pardir))
 from utils import SimpleProblem
 
-import os
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
-
 torch.set_default_dtype(torch.float64)
 
 num_var = 100

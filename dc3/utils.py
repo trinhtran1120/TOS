@@ -1,3 +1,9 @@
+import os
+# torch bundles its own libomp.dylib, which conflicts with the Homebrew libomp
+# pulled in via cyipopt/ipopt's openblas dependency on macOS. Must be set before
+# either torch or cyipopt is imported below.
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
 import torch
 import torch.nn as nn
 from torch.autograd import Function

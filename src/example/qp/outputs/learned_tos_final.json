@@ -1,0 +1,407 @@
+{
+  "data": "/Users/trinhtran/Library/CloudStorage/OneDrive-UniversityofCentralFlorida/Tringtringbling/09.Github/TOS/src/example/qp/datasets/moreau_data_qp_eta1.5_gamma1.npz",
+  "checkpoint": "/Users/trinhtran/Library/CloudStorage/OneDrive-UniversityofCentralFlorida/Tringtringbling/09.Github/TOS/src/model/checkpoints/qp_icnn.npz",
+  "seed": 17,
+  "gamma": 1.0,
+  "eta": 1.5,
+  "max_iter": 1000,
+  "correction_steps": 100,
+  "correction_cycles": 100,
+  "mu": 200.0,
+  "eps_abs": 0.0001,
+  "eps_rel": 0.0001,
+  "eps_feas": 1e-05,
+  "eps_geom": 1e-05,
+  "rows": [
+    {
+      "run_id": 21,
+      "reference_objective": -17.146661918837076,
+      "learned_objective": -17.14474801908556,
+      "gap_percent": 0.011161937877900617,
+      "osqp_seconds": 0.009863291983492672,
+      "learned": {
+        "converged": true,
+        "iterations": 23,
+        "gamma": 1.0,
+        "equality_residual": 0.00011023077661176384,
+        "inequality_residual": 2.7241942630595872e-06,
+        "inequality_projection_seconds": 0.004181544994935393,
+        "correction_seconds": 0.005373457097448409,
+        "correction_attempts": 334,
+        "accepted_corrections": 334,
+        "correction_stalls": 0,
+        "retraction_cycles": 23,
+        "correction_failures": 0,
+        "corrected_violation": 2.7241942630595872e-06,
+        "corrected_geometric_residual": 2.553300015861737e-08,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 2.7241942630595872e-06,
+            "feasibility_term": 3.710617191443384e-12,
+            "geometric_residual": 2.553300015861737e-08,
+            "lbfgs_iterations": 16,
+            "objective": 3.7758106011533796e-12,
+            "radius_term": 6.519340970999546e-14,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.012890083016827703
+      }
+    },
+    {
+      "run_id": 24,
+      "reference_objective": -16.626829650435333,
+      "learned_objective": -16.626031906864668,
+      "gap_percent": 0.004797929535797525,
+      "osqp_seconds": 0.007506416994147003,
+      "learned": {
+        "converged": true,
+        "iterations": 23,
+        "gamma": 1.0,
+        "equality_residual": 0.00015907781592838788,
+        "inequality_residual": 0.0,
+        "inequality_projection_seconds": 0.003872669069096446,
+        "correction_seconds": 0.005013083224184811,
+        "correction_attempts": 299,
+        "accepted_corrections": 299,
+        "correction_stalls": 0,
+        "retraction_cycles": 23,
+        "correction_failures": 0,
+        "corrected_violation": 0.0,
+        "corrected_geometric_residual": 1.1069252048301337e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 0.0,
+            "feasibility_term": 0.0,
+            "geometric_residual": 1.1069252048301337e-07,
+            "lbfgs_iterations": 12,
+            "objective": 1.2252834090882333e-12,
+            "radius_term": 1.2252834090882333e-12,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.012287165969610214
+      }
+    },
+    {
+      "run_id": 30,
+      "reference_objective": -17.076570109528888,
+      "learned_objective": -17.075492385556057,
+      "gap_percent": 0.006311126683625938,
+      "osqp_seconds": 0.007114083040505648,
+      "learned": {
+        "converged": true,
+        "iterations": 23,
+        "gamma": 1.0,
+        "equality_residual": 0.00014458915689652407,
+        "inequality_residual": 0.0,
+        "inequality_projection_seconds": 0.0038115044590085745,
+        "correction_seconds": 0.004176209098659456,
+        "correction_attempts": 241,
+        "accepted_corrections": 241,
+        "correction_stalls": 0,
+        "retraction_cycles": 23,
+        "correction_failures": 0,
+        "corrected_violation": 0.0,
+        "corrected_geometric_residual": 2.339979490173505e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 0.0,
+            "feasibility_term": 0.0,
+            "geometric_residual": 2.339979490173505e-07,
+            "lbfgs_iterations": 11,
+            "objective": 5.475504014432656e-12,
+            "radius_term": 5.475504014432656e-12,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.011144124902784824
+      }
+    },
+    {
+      "run_id": 41,
+      "reference_objective": -17.039261749084417,
+      "learned_objective": -17.036156828901767,
+      "gap_percent": 0.018222152041401415,
+      "osqp_seconds": 0.006774457986466587,
+      "learned": {
+        "converged": true,
+        "iterations": 24,
+        "gamma": 1.0,
+        "equality_residual": 0.00016452582102788327,
+        "inequality_residual": 4.5285296135233466e-07,
+        "inequality_projection_seconds": 0.003503168700262904,
+        "correction_seconds": 0.003734959987923503,
+        "correction_attempts": 220,
+        "accepted_corrections": 220,
+        "correction_stalls": 0,
+        "retraction_cycles": 24,
+        "correction_failures": 0,
+        "corrected_violation": 4.5285296135233466e-07,
+        "corrected_geometric_residual": 2.0684130408454848e-08,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 4.5285296135233466e-07,
+            "feasibility_term": 1.0253790230278955e-13,
+            "geometric_residual": 2.0684130408454848e-08,
+            "lbfgs_iterations": 10,
+            "objective": 1.453212273781862e-13,
+            "radius_term": 4.278332507539665e-14,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.010005583055317402
+      }
+    },
+    {
+      "run_id": 43,
+      "reference_objective": -17.381225374428524,
+      "learned_objective": -17.376500822485347,
+      "gap_percent": 0.027181926713450887,
+      "osqp_seconds": 0.006500416086055338,
+      "learned": {
+        "converged": true,
+        "iterations": 23,
+        "gamma": 1.0,
+        "equality_residual": 0.00018603415943974078,
+        "inequality_residual": 2.844430445847479e-06,
+        "inequality_projection_seconds": 0.0033064157469198108,
+        "correction_seconds": 0.0030624986393377185,
+        "correction_attempts": 173,
+        "accepted_corrections": 173,
+        "correction_stalls": 0,
+        "retraction_cycles": 23,
+        "correction_failures": 0,
+        "corrected_violation": 2.844430445847479e-06,
+        "corrected_geometric_residual": 2.5979566498079976e-08,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 2.844430445847479e-06,
+            "feasibility_term": 4.818713525897947e-12,
+            "geometric_residual": 2.5979566498079976e-08,
+            "lbfgs_iterations": 8,
+            "objective": 4.886207313440763e-12,
+            "radius_term": 6.749378754281595e-14,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.00904262496624142
+      }
+    },
+    {
+      "run_id": 69,
+      "reference_objective": -16.785513763064948,
+      "learned_objective": -16.784087473875815,
+      "gap_percent": 0.008497143484948793,
+      "osqp_seconds": 0.007477125036530197,
+      "learned": {
+        "converged": true,
+        "iterations": 22,
+        "gamma": 1.0,
+        "equality_residual": 0.00017500357598398963,
+        "inequality_residual": 6.432159194602605e-06,
+        "inequality_projection_seconds": 0.003415997955016792,
+        "correction_seconds": 0.006420372985303402,
+        "correction_attempts": 446,
+        "accepted_corrections": 446,
+        "correction_stalls": 0,
+        "retraction_cycles": 22,
+        "correction_failures": 0,
+        "corrected_violation": 6.432159194602605e-06,
+        "corrected_geometric_residual": 1.4640297552048764e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 6.432159194602605e-06,
+            "feasibility_term": 3.4501727296350733e-11,
+            "geometric_residual": 1.4640297552048764e-07,
+            "lbfgs_iterations": 25,
+            "objective": 3.664511042047598e-11,
+            "radius_term": 2.1433831241252503e-12,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.012863334035500884
+      }
+    },
+    {
+      "run_id": 72,
+      "reference_objective": -17.14923980031019,
+      "learned_objective": -17.146581321777013,
+      "gap_percent": 0.015502019705443232,
+      "osqp_seconds": 0.006829791935160756,
+      "learned": {
+        "converged": true,
+        "iterations": 23,
+        "gamma": 1.0,
+        "equality_residual": 0.0001897925340044182,
+        "inequality_residual": 1.5015584819977335e-06,
+        "inequality_projection_seconds": 0.0037398342974483967,
+        "correction_seconds": 0.0035592097556218505,
+        "correction_attempts": 170,
+        "accepted_corrections": 170,
+        "correction_stalls": 0,
+        "retraction_cycles": 23,
+        "correction_failures": 0,
+        "corrected_violation": 1.5015584819977335e-06,
+        "corrected_geometric_residual": 8.021143393932562e-08,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 1.5015584819977335e-06,
+            "feasibility_term": 1.3314906873984555e-12,
+            "geometric_residual": 8.021143393932562e-08,
+            "lbfgs_iterations": 7,
+            "objective": 1.9748781008587353e-12,
+            "radius_term": 6.433874134602797e-13,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.010385875008068979
+      }
+    },
+    {
+      "run_id": 77,
+      "reference_objective": -16.734084148065563,
+      "learned_objective": -16.73324996691822,
+      "gap_percent": 0.004984922628347136,
+      "osqp_seconds": 0.00709325005300343,
+      "learned": {
+        "converged": true,
+        "iterations": 24,
+        "gamma": 1.0,
+        "equality_residual": 7.970211832031282e-05,
+        "inequality_residual": 6.941264344639819e-06,
+        "inequality_projection_seconds": 0.003724791924469173,
+        "correction_seconds": 0.005444495123811066,
+        "correction_attempts": 343,
+        "accepted_corrections": 343,
+        "correction_stalls": 0,
+        "retraction_cycles": 24,
+        "correction_failures": 0,
+        "corrected_violation": 6.941264344639819e-06,
+        "corrected_geometric_residual": 4.789858967235716e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 0.5,
+            "feasibility_residual": 6.941264344639819e-06,
+            "feasibility_term": 3.4793590104569686e-11,
+            "geometric_residual": 4.789858967235716e-07,
+            "lbfgs_iterations": 14,
+            "objective": 5.773633903057809e-11,
+            "radius_term": 2.29427489260084e-11,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.012352040968835354
+      }
+    },
+    {
+      "run_id": 96,
+      "reference_objective": -16.644577778665237,
+      "learned_objective": -16.643883510011328,
+      "gap_percent": 0.004171140074210799,
+      "osqp_seconds": 0.006974874995648861,
+      "learned": {
+        "converged": true,
+        "iterations": 24,
+        "gamma": 1.0,
+        "equality_residual": 9.494305577195661e-05,
+        "inequality_residual": 5.904233431053285e-06,
+        "inequality_projection_seconds": 0.0035369170363992453,
+        "correction_seconds": 0.006459496798925102,
+        "correction_attempts": 453,
+        "accepted_corrections": 453,
+        "correction_stalls": 0,
+        "retraction_cycles": 24,
+        "correction_failures": 0,
+        "corrected_violation": 5.904233431053285e-06,
+        "corrected_geometric_residual": 1.3934805753734736e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 5.904233431053285e-06,
+            "feasibility_term": 4.267051084776569e-11,
+            "geometric_residual": 1.3934805753734736e-07,
+            "lbfgs_iterations": 24,
+            "objective": 4.4612298961708876e-11,
+            "radius_term": 1.941788113943187e-12,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.012846875004470348
+      }
+    },
+    {
+      "run_id": 104,
+      "reference_objective": -17.31539139685848,
+      "learned_objective": -17.311958495932252,
+      "gap_percent": 0.01982571948590647,
+      "osqp_seconds": 0.007039999938569963,
+      "learned": {
+        "converged": true,
+        "iterations": 24,
+        "gamma": 1.0,
+        "equality_residual": 0.00012670809568327002,
+        "inequality_residual": 0.0,
+        "inequality_projection_seconds": 0.0035548328887671232,
+        "correction_seconds": 0.003632292151451111,
+        "correction_attempts": 208,
+        "accepted_corrections": 208,
+        "correction_stalls": 0,
+        "retraction_cycles": 24,
+        "correction_failures": 0,
+        "corrected_violation": 0.0,
+        "corrected_geometric_residual": 1.0600336786126263e-07,
+        "correction_rounds": [
+          {
+            "accepted_step_size": 1.0,
+            "feasibility_residual": 0.0,
+            "feasibility_term": 0.0,
+            "geometric_residual": 1.0600336786126263e-07,
+            "lbfgs_iterations": 9,
+            "objective": 1.1236713997930168e-12,
+            "radius_term": 1.1236713997930168e-12,
+            "terminated_before_retraction": true
+          }
+        ],
+        "mu": 200.0,
+        "eps_feas": 1e-05,
+        "eps_geom": 1e-05,
+        "total_seconds": 0.010035790968686342
+      }
+    }
+  ]
+}

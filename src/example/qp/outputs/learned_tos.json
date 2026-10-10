@@ -1,0 +1,160 @@
+{
+  "checkpoint": "/Users/trinhtran/Library/CloudStorage/OneDrive-UniversityofCentralFlorida/Tringtringbling/09.Github/TOS/src/model/checkpoints/qp_icnn.npz",
+  "data": "/Users/trinhtran/Library/CloudStorage/OneDrive-UniversityofCentralFlorida/Tringtringbling/09.Github/TOS/src/example/qp/datasets/moreau_data_qp_eta1.5_gamma1.npz",
+  "seed": 17,
+  "eta": 1.5,
+  "max_iter": 1000,
+  "learned_setup_seconds": 0.5829968749312684,
+  "rows": [
+    {
+      "run_id": 21,
+      "osqp_seconds": 0.009702041046693921,
+      "reference_objective": -17.146661918837076,
+      "learned_gap_percent": 0.10668327504576829,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 6.285046210141587e-07,
+        "inequality_residual": 0.19557816188680022,
+        "inequality_projection_seconds": 0.11003015656024218,
+        "total_seconds": 0.23867800005245954
+      }
+    },
+    {
+      "run_id": 24,
+      "osqp_seconds": 0.007474375073798001,
+      "reference_objective": -16.626829650435333,
+      "learned_gap_percent": 0.06675649861725072,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 1.0556297485031507e-06,
+        "inequality_residual": 0.030856699306332835,
+        "inequality_projection_seconds": 0.1113790178205818,
+        "total_seconds": 0.14189366693608463
+      }
+    },
+    {
+      "run_id": 30,
+      "osqp_seconds": 0.0075646660989150405,
+      "reference_objective": -17.076570109528888,
+      "learned_gap_percent": 0.09874852177904613,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 1.1079911028666345e-06,
+        "inequality_residual": 0.06515491207988067,
+        "inequality_projection_seconds": 0.10825212381314486,
+        "total_seconds": 0.13742858404293656
+      }
+    },
+    {
+      "run_id": 41,
+      "osqp_seconds": 0.007243999978527427,
+      "reference_objective": -17.039261749084417,
+      "learned_gap_percent": 0.17145620319886876,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 9.644070031455954e-07,
+        "inequality_residual": 0.09628854323233593,
+        "inequality_projection_seconds": 0.107556710136123,
+        "total_seconds": 0.1360676670446992
+      }
+    },
+    {
+      "run_id": 43,
+      "osqp_seconds": 0.00739508296828717,
+      "reference_objective": -17.381225374428524,
+      "learned_gap_percent": 0.18469253976814134,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 1.0900908313793423e-06,
+        "inequality_residual": 0.07553857096178263,
+        "inequality_projection_seconds": 0.10554501006845385,
+        "total_seconds": 0.13316125003620982
+      }
+    },
+    {
+      "run_id": 69,
+      "osqp_seconds": 0.007409667014144361,
+      "reference_objective": -16.785513763064948,
+      "learned_gap_percent": 0.050529570346627646,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 4.2411365108740995e-07,
+        "inequality_residual": 0.095690873616328,
+        "inequality_projection_seconds": 0.10724781616590917,
+        "total_seconds": 0.13637225003913045
+      }
+    },
+    {
+      "run_id": 72,
+      "osqp_seconds": 0.007423291099257767,
+      "reference_objective": -17.14923980031019,
+      "learned_gap_percent": 0.1224753394699016,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 9.540545389263855e-07,
+        "inequality_residual": 0.058995380274386555,
+        "inequality_projection_seconds": 0.10731908783782274,
+        "total_seconds": 0.13567483401857316
+      }
+    },
+    {
+      "run_id": 77,
+      "osqp_seconds": 0.007398165995255113,
+      "reference_objective": -16.734084148065563,
+      "learned_gap_percent": 0.07026608130736067,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 6.613454623938253e-07,
+        "inequality_residual": 0.03186690966173078,
+        "inequality_projection_seconds": 0.10718268540222198,
+        "total_seconds": 0.13543604093138129
+      }
+    },
+    {
+      "run_id": 96,
+      "osqp_seconds": 0.007318083080463111,
+      "reference_objective": -16.644577778665237,
+      "learned_gap_percent": 0.04323255631452891,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 6.465396795718448e-07,
+        "inequality_residual": 0.025739081878810133,
+        "inequality_projection_seconds": 0.10849575884640217,
+        "total_seconds": 0.1379739580443129
+      }
+    },
+    {
+      "run_id": 104,
+      "osqp_seconds": 0.007242624997161329,
+      "reference_objective": -17.31539139685848,
+      "learned_gap_percent": 0.13999126245954283,
+      "learned": {
+        "converged": false,
+        "iterations": 1000,
+        "gamma": 1.0,
+        "equality_residual": 9.72160852708015e-07,
+        "inequality_residual": 0.05348297770192989,
+        "inequality_projection_seconds": 0.10663235222455114,
+        "total_seconds": 0.1349234579829499
+      }
+    }
+  ]
+}

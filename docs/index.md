@@ -34,7 +34,7 @@ One file per topic -- all code must satisfy these:
 | [linting-formatting.md](standards/linting-formatting.md) | Ruff, pydoclint, basedpyright config |
 | [exploration-validation.md](standards/exploration-validation.md) | Scratch scripts and API validation |
 | [device-utilization.md](standards/device-utilization.md) | GPU selection, JAX device placement |
-| [qp-experiment.md](standards/qp-experiment.md) | Projection QP file layout and artifacts |
+| [qp-experiment.md](standards/qp-experiment.md) | QP file layout and outputs |
 
 ---
 

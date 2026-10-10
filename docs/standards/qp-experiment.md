@@ -1,9 +1,10 @@
-# Projection QP experiment layout
+# QP experiment layout
 
-- Keep the projection QP implementation, tests, and problem configuration JSON files in `src/qp/`.
-- Define problem dimensions and matrices in a JSON configuration file.
-- Save generated problem and query data as `.npz` files in `src/dataset/`.
-- Save per-query results as `.csv` files in `src/results/qp/`.
-- Save the result report as a `.md` file beside the CSV in `src/results/qp/`.
+- Keep the ICNN and training command in [`src/model/`](../../src/model/).
+- Keep QP training settings and the saved checkpoint in [`src/qp/`](../../src/qp/).
+- Keep the dataset in [`data/qp/`](../../data/qp/) and benchmark output in [`results/qp/`](../../results/qp/).
+- Keep benchmark commands in [`experiments/qp/benchmark/`](../../experiments/qp/benchmark/), problem solvers in [`experiments/qp/problem/`](../../experiments/qp/problem/), and data generation in [`experiments/qp/data_gen/`](../../experiments/qp/data_gen/).
 
-Follow [`guide_qp.md`](../../src/qp/guide_qp.md) and [`AGENTS_qp.md`](../../src/qp/AGENTS_qp.md) for the experiment method and validation requirements.
+The [QP README](../../experiments/qp/README.md) lists the current commands. The [research guide](../../experiments/qp/docs/guide_qp.md) and [earlier notes](../../experiments/qp/docs/AGENTS_qp.md) are archived context.
+
+Place future examples beside `qp/` under `experiments/`, `data/`, and `results/`.

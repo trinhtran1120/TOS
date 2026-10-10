@@ -1,6 +1,6 @@
 """Train an ICNN on value and input-gradient labels.
 
-Run: python3 src/model/train.py --config src/model/configs/qp.json
+Run: uv run --locked python -m model.train --config src/qp/configs.json
 """
 
 import argparse
@@ -11,7 +11,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 jax.config.update("jax_enable_x64", True)
-from icnn import init_icnn_params, predict_batch, save_checkpoint
+from model.icnn import init_icnn_params, predict_batch, save_checkpoint
 
 
 def make_train_step(model, gradient_scale, gradient_weight, learning_rate):
@@ -91,8 +91,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--config", type=Path,
-        default=Path(__file__).resolve().parent / "configs/qp.json",
+        default=Path(__file__).resolve().parents[1] / "qp/configs.json",
     )
+    parser.add_argument("--data", type=Path)
+    parser.add_argument("--checkpoint", type=Path)
     args = parser.parse_args()
     config_path = args.config.resolve()
     config = json.loads(config_path.read_text())
@@ -100,8 +102,8 @@ def main():
     model_config = config["model"]
     training = config["training"]
 
-    data_path = (config_path.parent / data_config["path"]).resolve()
-    checkpoint_path = (config_path.parent / config["checkpoint"]).resolve()
+    data_path = (args.data or config_path.parent / data_config["path"]).resolve()
+    checkpoint_path = (args.checkpoint or config_path.parent / config["checkpoint"]).resolve()
     with np.load(data_path) as data:
         x = data[data_config["input_key"]].astype(np.float32)
         values = data[data_config["value_key"]].astype(np.float32)

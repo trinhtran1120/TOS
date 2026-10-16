@@ -2,6 +2,14 @@
 # Convexity is enforced by nonnegative weights (via a projection act_p) on the state
 # connections and the last-layer z-weights, and by using a convex, nondecreasing activation.
 #
+# LASSO structure-aware model (docs/guides/lasso.md, sections 3-6):
+#   M_hat(q; x) = F_theta(q; x) + D(q; x), with packed inputs [q, x].
+#   D = sum_i a_l1[i] * lambda * H_{rho*lambda}(q[i])
+#       + a_eq * dist(q, {y: Ay=x})^2 / (2*rho)
+#       + sum_j a_ineq[j] * relu(G[j] @ q - h[j])^2 / (2*rho*||G[j]||^2).
+#   make_lasso_dictionary builds these fixed atoms; only F_theta is trained.
+#   loss_fn supervises M_hat and dM_hat/dq with squared errors (section 6).
+#
 # The problems differ in three training choices, selected with make_icnn / train_icnn:
 #   weight_act  "relu" (entr_max, mpc) or "softplus" (power_grid, mvee): the projection act_p
 #   keep_best   return the parameters with the best validation objective (entr_max, mpc)
@@ -13,7 +21,7 @@
 #               "softplus<β>" = softplus(β t)/β, or "elu".  Layer 1 needs a convex activation, the
 #               later layers convex and nondecreasing; all of these are both.  save_model writes them
 #               to the .npz (act_kind, act_beta), which src/icnn.jl reads.
-#   huber_terms k > 0 adds Σᵢ softplus(c̃ᵢ) H_δᵢ(Bᵢᵀx + dᵢ), δᵢ = softplus(δ̃ᵢ), to the ICNN: learned
+#   Legacy option, unused for LASSO: huber_terms k > 0 adds Σᵢ softplus(c̃ᵢ) H_δᵢ(Bᵢᵀx + dᵢ), δᵢ = softplus(δ̃ᵢ): learned
 #               Huber terms (H_δ = Moreau envelope of |t|) that give the gradient exact corners, for
 #               an L1 term in the objective.  Still convex.  save_model writes huber_B, huber_d,
 #               huber_c, huber_delta to the .npz, which src/icnn.jl reads.
@@ -106,6 +114,23 @@ def huber(t, delta):
     return jnp.where(a <= delta, t * t / (2 * delta), a - delta / 2)
 
 
+@jax.jit
+def lasso_huber_atoms(q, rho, l1_weight):
+    """Coordinatewise L1 envelope atoms from the guide, section 3.1.
+
+    phi_i(q) = lambda * H_{rho*lambda}(q_i)
+             = q_i^2 / (2*rho),                    |q_i| <= rho*lambda
+               lambda*|q_i| - rho*lambda^2 / 2,    otherwise.
+
+    Return one atom per query coordinate, before the fixed a_l1 weighting.
+    These atoms contribute to M_hat; supervision uses the squared errors in
+    section 6. The safe threshold also supports the zero-L1 ablation.
+    """
+    delta = rho * l1_weight
+    safe_delta = jnp.where(delta > 0, delta, jnp.ones_like(delta))
+    return l1_weight * huber(q, safe_delta)
+
+
 WEIGHT_ACTS = {"relu": jax.nn.relu, "softplus": jax.nn.softplus}
 
 # Hidden-layer activations (convex, nondecreasing): name -> (kind code for src/icnn.jl, β).
@@ -144,6 +169,9 @@ def make_lasso_dictionary(A, G, h, rho: float, l1_weight: float,
                           a_l1=0.0, a_eq: float = 0.0, a_ineq=0.0):
     """Fixed analytic atoms for [q, x], where Ay=x and Gy<=h.
 
+    Mapping to the guide: q is its query z, rho is gamma, A/x are its
+    equality G/h, and G/h are its inequality C/d. Shared matrices are fixed;
+    x supplies the varying problem instance. See sections 3.1-3.4.
     These are envelopes of isolated components, not an additive formula for the
     full envelope. All weights are manual, nonnegative, and outside params.
     """
@@ -183,13 +211,17 @@ def make_lasso_dictionary(A, G, h, rho: float, l1_weight: float,
         q, x = packed[:n], packed[n:]
         if q.shape != (n,) or x.shape != (A.shape[0],):
             raise ValueError("Dictionary input must pack [q, x]")
-        l1 = (jnp.dot(l1_weights, l1_weight * huber(q, rho * l1_weight))
-              if l1_weight > 0 else jnp.asarray(0.0, dtype=q.dtype))
+        # 3.1: coordinatewise Huber atoms, with fixed threshold rho*lambda.
+        phi_l1 = lasso_huber_atoms(q, rho, l1_weight)
+        # 3.2: squared distance to the whole affine equality set.
         displacement = pinv @ (Aj @ q - x)
-        equality = eq_weight * jnp.sum(displacement ** 2) / (2 * rho)
+        phi_eq = jnp.sum(displacement ** 2) / (2 * rho)
+        # 3.3: separate half-space atoms, evaluated at the same query.
         violation = jax.nn.relu(Gj @ q - hj)
-        inequality = jnp.sum(ineq_weights * violation ** 2 / (2 * rho * norms))
-        return l1 + equality + inequality
+        phi_ineq = violation ** 2 / (2 * rho * norms)
+        # 3.4: manual nonnegative coefficients; no trainable dictionary state.
+        return (jnp.dot(l1_weights, phi_l1) + eq_weight * phi_eq
+                + jnp.dot(ineq_weights, phi_ineq))
 
     return dictionary
 
@@ -230,6 +262,7 @@ def make_icnn(weight_act: str = "relu", keep_best: bool = True, acts: Optional[L
             t = jnp.dot(params["huber_B"].T, x) + params["huber_d"]
             f = f + jnp.dot(jax.nn.softplus(params["huber_c"]), huber(t, jax.nn.softplus(params["huber_delta"])))
         if dictionary is not None:
+            # Section 4: M_hat = F_theta + D, including the fixed Huber atoms.
             f = f + dictionary(x)
         return f
 
@@ -251,7 +284,12 @@ def make_icnn(weight_act: str = "relu", keep_best: bool = True, acts: Optional[L
     # -----------------------------
     @jax.jit
     def loss_fn(params, xb, yb, gb, grad_weight: float = 1.0):
-        """Returns (total_loss, (value_mse, grad_mse))"""
+        """Section 6: lambda_v * value MSE + lambda_g * query-gradient MSE.
+
+        Both predictions include the fixed Huber/equality/inequality dictionary.
+        grad_wrt_x differentiates the complete scalar F_theta + D with respect
+        to q only when query_dim is set. Returns (loss, (value_mse, grad_mse)).
+        """
         y_pred = batched_forward(params, xb)             # (B,)
         g_pred = batched_grad_wrt_x(params, xb)          # (B, n)
         value_mse = jnp.mean((y_pred - yb) ** 2)
